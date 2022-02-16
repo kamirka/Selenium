@@ -41,15 +41,6 @@ public class ContactUsTest extends BaseTest {
         contactUsFormPage.clickOnSendButton();
         contactUsFormPage.redAlertBoxIsDisplayed();
         assertThat(contactUsFormPage.redAlertBoxIsDisplayed()).isTrue();
-
-        //--wait --nie używaj :)
-        //Thread.sleep(2000);
-
-        //Explicit wait
-//        WebElement redAlert = driver.findElement(By.className("alert-danger"));
-//        WebDriverWait wait = new WebDriverWait(driver, 5);
-//        wait.until(ExpectedConditions.visibilityOf(redAlert));
-//        assertThat(redAlert.isDisplayed()).isTrue();
     }
 
     @Test
@@ -61,11 +52,6 @@ public class ContactUsTest extends BaseTest {
         contactUsFormPage.redAlertBoxIsDisplayed();
         assertThat(contactUsFormPage.redAlertBoxIsDisplayed()).isTrue();
 
-        //Explicit wait
-//        WebElement redAlert = driver.findElement(By.className("alert-danger"));
-//        WebDriverWait wait = new WebDriverWait(driver, 5);
-//        wait.until(ExpectedConditions.visibilityOf(redAlert));
-//        assertThat(redAlert.isDisplayed()).isTrue();
     }
 
     @Test
@@ -84,11 +70,6 @@ public class ContactUsTest extends BaseTest {
         assertThat(contactUsFormPage.greenAlertBoxIsDisplayed()).isTrue();
         assertThat(contactUsFormPage.getTextFromGreenAlertBox()).contains("Your message has been successfully sent to our team.");
 
-//        //Explicit wait
-//        WebElement greenAlert = driver.findElement(By.className("alert-success"));
-//        WebDriverWait wait = new WebDriverWait(driver, 5);
-//        wait.until(ExpectedConditions.visibilityOf(greenAlert));
-//        assertThat(greenAlert.getText().contains("Your message has been successfully sent to our team."));
     }
 
 }

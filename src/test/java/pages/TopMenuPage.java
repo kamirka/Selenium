@@ -15,4 +15,5 @@ public class TopMenuPage extends BasePage{
     public void clickOnContactUsLink(){
         contactUsLink.click();
     }
+
 }

@@ -1,5 +1,6 @@
 package Tests;
 
+
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -14,6 +15,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class HomePageTest extends BaseTest{
 
     private PopularItemsPage popularItemsPage;
+
 
     @BeforeEach
     void setupTest() {
