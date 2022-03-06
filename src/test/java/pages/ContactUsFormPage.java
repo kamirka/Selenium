@@ -8,10 +8,10 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 
-public class ContactUsFormPage extends BasePage{
+public class ContactUsFormPage extends BasePage {
 
     public ContactUsFormPage(WebDriver driver) {
-        super(driver); //odwołujemy się do konstryktora z klasy matki
+        super(driver);
     }
 
     @FindBy(id = "email")
@@ -35,42 +35,39 @@ public class ContactUsFormPage extends BasePage{
     @FindBy(className = "alert-success")
     WebElement greenAlertBox;
 
-    public void fillEmail(){
+    public void fillEmail() {
         email.sendKeys("test@test.com");
     }
-    public void fillOrderReference(){
-        orderReference.sendKeys("something");
-    }
-    public void fillMessage(){
-        messageTextArea.sendKeys("some message");
-    }
-    public void clickOnSendButton(){
+
+    public void clickOnSendButton() {
         sendButton.click();
     }
 
-    public boolean redAlertBoxIsDisplayed(){
-         return isAlertBoxDisplayed(redAlertBox);
+    public boolean redAlertBoxIsDisplayed() {
+        return isAlertBoxDisplayed(redAlertBox);
     }
 
-    public boolean greenAlertBoxIsDisplayed(){
+    public boolean greenAlertBoxIsDisplayed() {
         return isAlertBoxDisplayed(greenAlertBox);
     }
 
-    private boolean isAlertBoxDisplayed(WebElement box){
+    private boolean isAlertBoxDisplayed(WebElement box) {
         wait.until(ExpectedConditions.visibilityOf(box));
 
         boolean isDisplayed = false;
-        try{
+        try {
             isDisplayed = box.isDisplayed();
-        }catch (NoSuchElementException e){}
+        } catch (NoSuchElementException e) {
+        }
         return isDisplayed;
     }
 
-    public String getTextFromGreenAlertBox(){
+    public String getTextFromGreenAlertBox() {
         wait.until(ExpectedConditions.visibilityOf(greenAlertBox));
         return greenAlertBox.getText();
     }
-    public void sendCorrectContactUsMessage(Message message){
+
+    public void sendCorrectContactUsMessage(Message message) {
         Select select = new Select(subjectHeading);
         select.selectByVisibleText(message.getSubjectHeading().getValue());
 

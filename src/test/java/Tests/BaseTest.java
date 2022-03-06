@@ -9,15 +9,15 @@ import org.openqa.selenium.WebDriver;
 public class BaseTest {
     protected static final String BASE_URL="http://automationpractice.com/index.php";
 
-    protected WebDriver driver; //do komunikacji z przeglądarką
+    protected WebDriver driver;
 
-    @BeforeAll //przed wszystkimi testami
+    @BeforeAll
     public static void setupClass() {
         WebDriverManager.chromedriver().setup();
+
     }
 
     @AfterEach
-        //po każdym teście
     void teardown() {
         if (driver != null) {
             driver.quit();

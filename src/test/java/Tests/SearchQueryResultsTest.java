@@ -35,8 +35,9 @@ public class SearchQueryResultsTest extends BaseTest{
 
         searchQueryResultsPage.searchingResultsList(search);
 
-        assertThat(searchQueryResultsPage.checkSearchBreadcrumbs()).isEqualTo(PageBreadcrumbsUtil.SEARCH_BREADCRUMBS);
         assertThat(searchQueryResultsPage.getProductNameResult()).isEqualTo(search.getSearchQuery());
         assertThat(searchQueryResultsPage.getProductCountResult().trim()).isEqualTo("Showing 1 - 1 of 1 item");
+        assertThat(searchQueryResultsPage.getProductPrice().trim()).isNotNull();
+        assertThat(searchQueryResultsPage.checkSearchBreadcrumbs()).isEqualTo(PageBreadcrumbsUtil.SEARCH_BREADCRUMBS);
     }
 }

@@ -12,8 +12,14 @@ public class TopMenuPage extends BasePage{
     @FindBy(linkText = "Contact us")
     WebElement contactUsLink;
 
+    @FindBy(linkText = "Sign in")
+    WebElement signInLink;
+
     public void clickOnContactUsLink(){
         contactUsLink.click();
+    }
+    public void clickOnSignInLink(){
+        signInLink.click();
     }
 
 }

@@ -32,8 +32,7 @@ public class ContactUsTest extends BaseTest {
 
     @Test
     @Order(1)
-    public void  shouldhNotAllowSendEmptyContactForm() {
-        //----GLOBALNY WAIT DLA WSZYSTKICH ELEMENTÓW
+    public void shouldhNotAllowSendEmptyContactForm() {
 
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
 
@@ -45,7 +44,7 @@ public class ContactUsTest extends BaseTest {
 
     @Test
     @Order(2)
-    public void shouldNotAllowToSendContactUsFormOnlyWithEmail(){
+    public void shouldNotAllowToSendContactUsFormOnlyWithEmail() {
         topMenuPage.clickOnContactUsLink();
         contactUsFormPage.fillEmail();
         contactUsFormPage.clickOnSendButton();
@@ -56,7 +55,7 @@ public class ContactUsTest extends BaseTest {
 
     @Test
     @Order(3)
-    public void sendCorrectContactUsForm(){
+    public void sendCorrectContactUsForm() {
         topMenuPage.clickOnContactUsLink();
 
         Message message = new Message();

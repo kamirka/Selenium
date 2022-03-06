@@ -26,6 +26,9 @@ public class SearchQueryResultsPage extends BasePage{
     @FindBy(xpath = "//*[@class='right-block']//*[@class='product-name']")
     WebElement productName;
 
+    @FindBy(css = ".right-block > .content_price > span")
+    WebElement productPrice;
+
     public void searchingResultsList(SearchQueryTop search){
         searchQueryTop.sendKeys(search.getSearchQuery());
         submitSearch.click();
@@ -42,5 +45,9 @@ public class SearchQueryResultsPage extends BasePage{
     public String getProductCountResult(){
         String productCountText = productCount.getText();
         return productCountText;
+    }
+    public String getProductPrice(){
+        String productPriceUSD = productPrice.getText();
+        return productPriceUSD;
     }
 }
