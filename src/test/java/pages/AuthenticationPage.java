@@ -3,9 +3,11 @@ package pages;
 import model.CreateAccount.Address;
 import model.CreateAccount.Email;
 import model.CreateAccount.PersonalInformation;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import utils.Country;
 
@@ -84,11 +86,33 @@ public class AuthenticationPage extends BasePage {
     @FindBy(id = "submitAccount")
     WebElement submitAccount;
 
+    @FindBy(xpath = "//*[@id='create_account_error']/ol/li")
+    WebElement redAlert;
+
 
     public void checkEmailAvailability(Email email) {
 
         emailCreate.sendKeys(email.getEmail());
         submitButtonEmailCreate.click();
+    }
+
+    public boolean redAlertIsDisplayed(){
+        return checkValidationOfUniqueEmail(redAlert);
+    }
+
+    public boolean checkValidationOfUniqueEmail(WebElement validationError){
+        wait.until(ExpectedConditions.visibilityOf(validationError));
+
+        boolean isDisplayed = false;
+        try {
+            isDisplayed = validationError.isDisplayed();
+        } catch (NoSuchElementException e) {
+        }
+        return isDisplayed;
+    }
+    public String getTextFromAlert(){
+        wait.until(ExpectedConditions.visibilityOf(redAlert));
+        return redAlert.getText();
     }
 
     public void createAccount(PersonalInformation pi, Address address) {

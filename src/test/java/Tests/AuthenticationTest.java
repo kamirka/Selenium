@@ -54,8 +54,7 @@ public class AuthenticationTest extends BaseTest {
     @Test
     @Order(1)
     public void sendCorrectContactUsForm() {
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
         topMenuPage.clickOnSignInLink();
 
         Email email = new Email();
@@ -63,14 +62,12 @@ public class AuthenticationTest extends BaseTest {
         authenticationPage.checkEmailAvailability(email);
 
         PersonalInformation personalInformation = new PersonalInformation();
-
         personalInformation.setFirstName(firstNameF);
         personalInformation.setLastName(lastNameF);
         personalInformation.setPassword(passwordF);
         personalInformation.setDateOfBirthDays(personalInformation.getDateOfBirthDays());
         personalInformation.setDateOfBirthMonths(personalInformation.getDateOfBirthMonths());
         personalInformation.setDateOfBirthYears(personalInformation.getDateOfBirthYears());
-
 
         Address address = new Address();
         address.setFirstName(firstNameF);
@@ -83,11 +80,24 @@ public class AuthenticationTest extends BaseTest {
         address.setMobilePhone(mobilePhoneF);
         address.setAddressAlias(addressAliasF);
 
-
         authenticationPage.createAccount(personalInformation, address);
 
         assertThat(myAccountPage.infoParagraph()).isTrue();
         assertThat(myAccountPage.getTextFromParagraph()).contains("Welcome to your account. Here you can manage all of your personal information and orders.");
 
+
+    }
+
+    @Test
+    @Order(2)
+    public void checkValidationOfUniqueEmails() {
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+        topMenuPage.clickOnSignInLink();
+
+        Email email = new Email();
+        email.setEmail("test@test.pl");
+        authenticationPage.checkEmailAvailability(email);
+        assertThat(authenticationPage.redAlertIsDisplayed()).isTrue();
+        assertThat(authenticationPage.getTextFromAlert()).contains("An account using this email address has already been registered. Please enter a valid password or request a new one.");
     }
 }

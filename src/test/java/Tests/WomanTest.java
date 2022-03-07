@@ -4,6 +4,7 @@ import org.junit.jupiter.api.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import pages.WomenPage;
 import utils.PageTitleUtils;
+
 import java.time.Duration;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -12,7 +13,7 @@ import java.util.stream.Collectors;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-public class WomanTest extends BaseTest{
+public class WomanTest extends BaseTest {
     private WomenPage womanPage;
 
     @BeforeEach
@@ -27,7 +28,7 @@ public class WomanTest extends BaseTest{
 
     @Test
     @Order(1)
-    public void  showPricesBiggerThanZero(){
+    public void showPricesBiggerThanZero() {
 
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
         womanPage.clickOnWomenLink();
@@ -43,11 +44,11 @@ public class WomanTest extends BaseTest{
 
         //Converting to Float list and filtering prices > 0
         List<Float> productPriceList = sProductPricesList.stream()
-                        .map(Float::valueOf)
-                        .filter(f->f.floatValue() > 0)
-                        .collect(Collectors.toList());
+                .map(Float::valueOf)
+                .filter(f -> f.floatValue() > 0)
+                .collect(Collectors.toList());
         System.out.println(productPriceList);
 
         assertThat(productPriceList).isNotEmpty();
-   }
+    }
 }

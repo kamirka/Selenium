@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Test;
 import org.openqa.selenium.chrome.ChromeDriver;
 import pages.PopularItemsPage;
 import utils.PageTitleUtils;
-
 import java.util.List;
 import java.util.stream.Collectors;
 

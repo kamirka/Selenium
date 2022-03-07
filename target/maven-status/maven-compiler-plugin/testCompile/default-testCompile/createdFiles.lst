@@ -1,7 +1,14 @@
+pages\SearchQueryResultsPage.class
 pages\BasePage.class
 pages\ContactUsFormPage.class
-pages\PopularItemsPage.class
+pages\AuthenticationPage.class
 Tests\ContactUsTest.class
 Tests\HomePageTest.class
-pages\TopMenuPage.class
 Tests\BaseTest.class
+pages\PopularItemsPage.class
+Tests\AuthenticationTest.class
+pages\WomenPage.class
+Tests\WomanTest.class
+Tests\SearchQueryResultsTest.class
+pages\TopMenuPage.class
+pages\MyAccountPage.class

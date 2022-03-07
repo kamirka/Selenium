@@ -1,3 +1,9 @@
-enums\MessageSubject.class
+utils\PageBreadcrumbsUtil.class
+model\CreateAccount\Address.class
 utils\PageTitleUtils.class
+model\CreateAccount\Email.class
+model\SearchQueryTop.class
+model\CreateAccount\PersonalInformation.class
+enums\MessageSubject.class
 model\Message.class
+utils\Country.class
